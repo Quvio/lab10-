@@ -10,6 +10,7 @@ root.geometry("300x300")
 GameOver = False
 Turn = 0
 buttons = []
+count = 0
 
 #Определение первого хода
 def first_turn():
@@ -35,7 +36,8 @@ victorys = [[0, 1, 2],
 
 #cwadawdsa
 def CheckVictory():
-    global GameOver
+    global GameOver, count
+    count += 1
     for line in victorys:
         X = 0
         O = 0
@@ -51,8 +53,10 @@ def CheckVictory():
         if O == 3:
             showinfo(title="Игра окончена", message='Вы проиграли')
             GameOver = True
-        if X + O == 9:
+        if count == 9:
             showinfo(title="Игра окончена",message="Ничья")
+            root.destroy()
+            count += 1
             GameOver = True
     if GameOver == True:
         root.destroy()
