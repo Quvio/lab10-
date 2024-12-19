@@ -25,7 +25,8 @@ def first_turn():
 map = [0,1,2,3,4,5,6,7,8]
 
 #Условия победы
-victorys = [[0, 1, 2],
+victorys =   [[2,4,6],
+             [0, 1, 2],
              [3, 4, 5],
              [6, 7, 8],
              [0, 3, 6],
@@ -49,15 +50,18 @@ def CheckVictory():
                 O += 1
         if X == 3:
             showinfo(title="Игра окончена", message='Вы выйграли')
-            GameOver = True
-        if O == 3:
+            count += 1
+            break
+        elif O == 3:
             showinfo(title="Игра окончена", message='Вы проиграли')
             GameOver = True
-        if count == 9:
+            count += 1
+            break
+        elif count == 9:
             showinfo(title="Игра окончена",message="Ничья")
-            root.destroy()
             count += 1
             GameOver = True
+            break
     if GameOver == True:
         root.destroy()
 
